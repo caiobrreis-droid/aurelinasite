@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #002d78; }
+body { margin: 0; min-width: 320px; background: #002d78; color: #fff; font-family: Arial, Helvetica, sans-serif; }
+.site-shell { min-height: 100vh; overflow-x: auto; background: #002d78; }
+.campaign-canvas { position: relative; width: min(100vw, 1536px); min-width: 960px; aspect-ratio: 3 / 2; margin: 0 auto; overflow: hidden; background: #003481; box-shadow: 0 0 80px rgb(0 14 54 / 42%); }
+.campaign-art { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: fill; user-select: none; pointer-events: none; }
+.hotspot { position: absolute; z-index: 3; display: block; border-radius: 8px; cursor: pointer; outline: none; }
+.hotspot:hover { background: rgb(255 215 0 / 12%); }
+.hotspot:focus-visible { outline: 4px solid #fff; outline-offset: 2px; background: rgb(255 215 0 / 18%); }
+.nav-inicio { left: 23.7%; top: 3.8%; width: 4.2%; height: 4.6%; }
+.nav-sobre { left: 29.1%; top: 3.8%; width: 4.4%; height: 4.6%; }
+.nav-propostas { left: 34.5%; top: 3.8%; width: 6.3%; height: 4.6%; }
+.nav-noticias { left: 42.1%; top: 3.8%; width: 5.7%; height: 4.6%; }
+.nav-galeria { left: 48.7%; top: 3.8%; width: 5.4%; height: 4.6%; }
+.nav-contato { left: 55.1%; top: 3.8%; width: 5.2%; height: 4.6%; }
+.whatsapp-top { left: 74.6%; top: 3.5%; width: 14.3%; height: 4.6%; }
+.propostas-cta { left: 17.7%; top: 38.8%; width: 15.7%; height: 4.5%; }
+.instagram-cta { left: 34.9%; top: 38.8%; width: 14.8%; height: 4.5%; }
+.saiba-mais { left: 6.1%; top: 82.8%; width: 15.8%; height: 4.5%; }
+.social-rail .social { left: .25%; width: 3.35%; height: 4.4%; }
+.social-rail .instagram { top: 35.9%; }
+.social-rail .facebook { top: 40.1%; }
+.social-rail .whatsapp { top: 44.2%; }
+.social-rail .youtube { top: 48.2%; }
+.flag { top: 64.8%; height: 22.3%; }
+.flag.saude { left: 32.4%; width: 12.5%; }
+.flag.educacao { left: 44.6%; width: 12.9%; }
+.flag.social-card { left: 56.8%; width: 13.5%; }
+.flag.infraestrutura { left: 69.1%; width: 13.3%; }
+.flag.agricultura { left: 81.3%; width: 13.1%; }
+.newsletter-form { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.overlay-input { position: absolute; top: 94.15%; height: 3.65%; z-index: 5; border: 0; border-radius: 5px; background: transparent; color: #10234d; font-size: clamp(9px, .78vw, 13px); padding: 0 1.1%; outline: none; pointer-events: auto; }
+.overlay-input::placeholder { color: transparent; }
+.overlay-input:focus { background: rgb(255 255 255 / 98%); box-shadow: 0 0 0 3px #ffd800; }
+.name-input { left: 32.3%; width: 13.7%; }
+.email-input { left: 46.1%; width: 13.5%; }
+.receive-button { left: 60.0%; top: 94.0%; width: 11.2%; height: 4.05%; pointer-events: auto; border: 0; background: transparent; }
+.anchor { position: absolute; left: 0; width: 1px; height: 1px; scroll-margin-top: 20px; }
+.anchor-sobre { top: 52%; }
+.anchor-flags { top: 64%; }
+.anchor-contato { top: 91%; }
+.toast { position: fixed; z-index: 20; right: 24px; bottom: 24px; max-width: 360px; border: 2px solid #ffd600; border-radius: 14px; background: #003b94; padding: 16px 20px; color: #fff; font-weight: 700; box-shadow: 0 18px 48px rgb(0 0 0 / 35%); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 959px) { .campaign-canvas { margin: 0; } .toast { right: 14px; bottom: 14px; left: 14px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
