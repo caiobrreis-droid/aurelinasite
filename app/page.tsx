@@ -31,11 +31,11 @@ export default function Home() {
 
         <a className="hotspot whatsapp-top" href="https://wa.me/?text=Ol%C3%A1%2C%20Aurelina!" target="_blank" rel="noreferrer"><span className="sr-only">Fale com Aurelina pelo WhatsApp</span></a>
         <a className="hotspot propostas-cta" href="#propostas"><span className="sr-only">Conheça minhas propostas</span></a>
-        <a className="hotspot instagram-cta" href="https://www.instagram.com/" target="_blank" rel="noreferrer"><span className="sr-only">Acompanhe no Instagram</span></a>
+        <a className="hotspot instagram-cta" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer"><span className="sr-only">Acompanhe Aurelina Medeiros no Instagram</span></a>
         <a className="hotspot saiba-mais" href="#sobre"><span className="sr-only">Saiba mais sobre Aurelina</span></a>
 
         <div className="social-rail" aria-label="Redes sociais">
-          <a className="hotspot social instagram" href="https://www.instagram.com/" target="_blank" rel="noreferrer"><span className="sr-only">Instagram</span></a>
+          <a className="hotspot social instagram" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer"><span className="sr-only">Instagram oficial de Aurelina Medeiros</span></a>
           <a className="hotspot social facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer"><span className="sr-only">Facebook</span></a>
           <a className="hotspot social whatsapp" href="https://wa.me/?text=Ol%C3%A1%2C%20Aurelina!" target="_blank" rel="noreferrer"><span className="sr-only">WhatsApp</span></a>
           <a className="hotspot social youtube" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><span className="sr-only">YouTube</span></a>
