@@ -1,11 +1,12 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useMemo, useState } from 'react';
+import materiasData from './materias.json';
 
 const links = [
   { label: 'Início', href: '#inicio', className: 'hotspot nav-inicio' },
   { label: 'Sobre', href: '#sobre', className: 'hotspot nav-sobre' },
-  { label: 'Propostas', href: '#propostas', className: 'hotspot nav-propostas' },
+  { label: 'Propostas', href: '#atuacao', className: 'hotspot nav-propostas' },
   { label: 'Notícias', href: '#noticias', className: 'hotspot nav-noticias' },
   { label: 'Galeria', href: '#galeria', className: 'hotspot nav-galeria' },
   { label: 'Contato', href: '#contato', className: 'hotspot nav-contato' },
@@ -13,6 +14,30 @@ const links = [
 
 export default function Home() {
   const [message, setMessage] = useState('');
+  const [busca, setBusca] = useState('');
+  const [tipo, setTipo] = useState('TODOS');
+  const [ano, setAno] = useState('TODOS');
+  const [limite, setLimite] = useState(12);
+
+  const anos = useMemo(
+    () => [...new Set(materiasData.materias.map((materia) => materia.ano))].sort((a, b) => b - a),
+    [],
+  );
+
+  const materiasFiltradas = useMemo(() => {
+    const termo = busca.trim().toLocaleLowerCase('pt-BR');
+
+    return materiasData.materias.filter((materia) => {
+      const correspondeTipo = tipo === 'TODOS' || materia.tipo === tipo;
+      const correspondeAno = ano === 'TODOS' || materia.ano === Number(ano);
+      const texto = `${materia.tipo} ${materia.numero} ${materia.ano} ${materia.ementa}`.toLocaleLowerCase('pt-BR');
+      return correspondeTipo && correspondeAno && (!termo || texto.includes(termo));
+    });
+  }, [ano, busca, tipo]);
+
+  function reiniciarLista() {
+    setLimite(12);
+  }
 
   function subscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,7 +55,7 @@ export default function Home() {
         </nav>
 
         <a className="hotspot whatsapp-top" href="https://wa.me/?text=Ol%C3%A1%2C%20Aurelina!" target="_blank" rel="noreferrer"><span className="sr-only">Fale com Aurelina pelo WhatsApp</span></a>
-        <a className="hotspot propostas-cta" href="#propostas"><span className="sr-only">Conheça minhas propostas</span></a>
+        <a className="hotspot propostas-cta" href="#atuacao"><span className="sr-only">Conheça os projetos e indicações</span></a>
         <a className="hotspot instagram-cta" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer"><span className="sr-only">Acompanhe Aurelina Medeiros no Instagram</span></a>
         <a className="hotspot saiba-mais" href="#sobre"><span className="sr-only">Saiba mais sobre Aurelina</span></a>
 
@@ -67,6 +92,101 @@ export default function Home() {
         <div id="infraestrutura" className="anchor anchor-flags" />
         <div id="agricultura" className="anchor anchor-flags" />
       </div>
+
+      <section id="atuacao" className="legislative-section" aria-labelledby="atuacao-title">
+        <div className="legislative-wrap">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">ATUAÇÃO PARLAMENTAR</p>
+              <h1 id="atuacao-title">Projetos de Lei e Indicações</h1>
+              <p className="section-intro">
+                Consulte todas as matérias de autoria e coautoria da deputada Aurelina Medeiros
+                registradas no Sistema de Apoio ao Processo Legislativo da Assembleia de Roraima.
+              </p>
+            </div>
+            <a className="official-source" href={materiasData.source} target="_blank" rel="noreferrer">
+              Ver fonte oficial <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div className="legislative-stats" aria-label="Resumo das matérias">
+            <div><strong>{materiasData.totals.total.toLocaleString('pt-BR')}</strong><span>matérias</span></div>
+            <div><strong>{materiasData.totals.projetos}</strong><span>Projetos de Lei</span></div>
+            <div><strong>{materiasData.totals.indicacoes}</strong><span>Indicações</span></div>
+            <div><strong>{anos.length}</strong><span>anos de atuação</span></div>
+          </div>
+
+          <div className="filters" aria-label="Filtros de matérias">
+            <label className="search-field">
+              <span className="sr-only">Pesquisar matéria</span>
+              <span aria-hidden="true">⌕</span>
+              <input
+                value={busca}
+                onChange={(event) => { setBusca(event.target.value); reiniciarLista(); }}
+                placeholder="Busque por tema, número ou palavra-chave"
+              />
+            </label>
+            <label>
+              <span className="sr-only">Tipo de matéria</span>
+              <select value={tipo} onChange={(event) => { setTipo(event.target.value); reiniciarLista(); }}>
+                <option value="TODOS">Todos os tipos</option>
+                <option value="PL">Projetos de Lei</option>
+                <option value="IND">Indicações</option>
+              </select>
+            </label>
+            <label>
+              <span className="sr-only">Ano da matéria</span>
+              <select value={ano} onChange={(event) => { setAno(event.target.value); reiniciarLista(); }}>
+                <option value="TODOS">Todos os anos</option>
+                {anos.map((item) => <option key={item} value={item}>{item}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div className="results-line" aria-live="polite">
+            <strong>{materiasFiltradas.length.toLocaleString('pt-BR')}</strong> matérias encontradas
+          </div>
+
+          <div className="matter-grid">
+            {materiasFiltradas.slice(0, limite).map((materia) => (
+              <article className="matter-card" key={materia.id}>
+                <div className="matter-card-top">
+                  <span className={`matter-type ${materia.tipo === 'PL' ? 'is-project' : 'is-indication'}`}>
+                    {materia.tipo === 'PL' ? 'PROJETO DE LEI' : 'INDICAÇÃO'}
+                  </span>
+                  <span className={`matter-status ${materia.emTramitacao ? 'is-active' : ''}`}>
+                    {materia.emTramitacao ? 'Em tramitação' : 'Tramitação encerrada'}
+                  </span>
+                </div>
+                <h2>{materia.tipo === 'PL' ? 'Projeto de Lei' : 'Indicação'} nº {materia.numero}/{materia.ano}</h2>
+                <p>{materia.ementa}</p>
+                <div className="matter-meta">
+                  <span>{new Date(`${materia.dataApresentacao}T12:00:00`).toLocaleDateString('pt-BR')}</span>
+                  {!materia.primeiroAutor && <span>Coautoria</span>}
+                </div>
+                <div className="matter-actions">
+                  <a href={materia.detalheUrl} target="_blank" rel="noreferrer">Ver tramitação <span aria-hidden="true">↗</span></a>
+                  {materia.textoUrl && <a href={materia.textoUrl} target="_blank" rel="noreferrer">Abrir documento</a>}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {materiasFiltradas.length === 0 && (
+            <div className="empty-state">Nenhuma matéria encontrada com esses filtros.</div>
+          )}
+
+          {limite < materiasFiltradas.length && (
+            <button className="load-more" type="button" onClick={() => setLimite((atual) => atual + 12)}>
+              Carregar mais matérias
+            </button>
+          )}
+
+          <p className="data-note">
+            Dados oficiais do SAPL/ALE-RR, atualizados em {new Date(materiasData.generatedAt).toLocaleDateString('pt-BR')}.
+          </p>
+        </div>
+      </section>
       {message && <div className="toast" role="status">{message}</div>}
     </main>
   );
