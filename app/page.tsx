@@ -206,6 +206,89 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <footer className="site-footer">
+        <div className="footer-accent" aria-hidden="true" />
+        <div className="footer-wrap">
+          <section className="footer-cta" aria-labelledby="footer-news-title">
+            <div>
+              <span className="footer-kicker">FIQUE POR DENTRO</span>
+              <h2 id="footer-news-title">Acompanhe o trabalho que transforma Roraima</h2>
+              <p>Receba novidades sobre projetos, indicações, ações e resultados da deputada Aurelina Medeiros.</p>
+            </div>
+            <form className="footer-newsletter" onSubmit={subscribe}>
+              <label>
+                <span className="sr-only">Seu nome</span>
+                <input name="footer-nome" placeholder="Seu nome" required />
+              </label>
+              <label>
+                <span className="sr-only">Seu melhor e-mail</span>
+                <input name="footer-email" type="email" placeholder="Seu melhor e-mail" required />
+              </label>
+              <button type="submit">QUERO RECEBER <span aria-hidden="true">→</span></button>
+            </form>
+          </section>
+
+          <div className="footer-main">
+            <section className="footer-brand" aria-label="Aurelina Medeiros">
+              <div className="footer-brand-mark">
+                <small>DEPUTADA ESTADUAL</small>
+                <strong>AURELINA</strong>
+                <span>MEDEIROS</span>
+              </div>
+              <div className="footer-number">44222</div>
+              <p>A amiga de sempre. Experiência, trabalho e compromisso com o povo de Roraima.</p>
+              <div className="footer-socials" aria-label="Redes e canais oficiais">
+                <a href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer" aria-label="Instagram oficial">◎</a>
+                <a href="https://wa.me/?text=Ol%C3%A1%2C%20Aurelina!" target="_blank" rel="noreferrer" aria-label="Falar pelo WhatsApp">◉</a>
+                <a href={materiasData.source} target="_blank" rel="noreferrer" aria-label="Atuação parlamentar no SAPL">▤</a>
+              </div>
+            </section>
+
+            <nav className="footer-column" aria-label="Navegação do rodapé">
+              <h3>Navegação</h3>
+              <a href="#inicio">Início</a>
+              <a href="#sobre">Sobre Aurelina</a>
+              <a href="#atuacao">Atuação parlamentar</a>
+              <a href="#propostas">Nossas bandeiras</a>
+              <a href="#galeria">Galeria</a>
+              <a href="#contato">Contato</a>
+            </nav>
+
+            <nav className="footer-column" aria-label="Áreas de atuação">
+              <h3>Áreas de atuação</h3>
+              <a href="#saude">Saúde de qualidade</a>
+              <a href="#educacao">Educação para todos</a>
+              <a href="#social">Desenvolvimento social</a>
+              <a href="#infraestrutura">Infraestrutura</a>
+              <a href="#agricultura">Agricultura familiar</a>
+              <a href="#atuacao">Projetos e indicações</a>
+            </nav>
+
+            <section className="footer-column footer-official">
+              <h3>Informações oficiais</h3>
+              <p>Consulte documentos, tramitações e a produção legislativa completa nos canais oficiais.</p>
+              <a className="footer-official-link" href={materiasData.source} target="_blank" rel="noreferrer">
+                <span aria-hidden="true">▤</span><span><b>SAPL / ALE-RR</b><small>Matérias da parlamentar</small></span><i aria-hidden="true">↗</i>
+              </a>
+              <a className="footer-official-link" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer">
+                <span aria-hidden="true">◎</span><span><b>Instagram oficial</b><small>@aurelinamedeirosoficial</small></span><i aria-hidden="true">↗</i>
+              </a>
+            </section>
+          </div>
+
+          <div className="footer-transparency">
+            <span aria-hidden="true">✓</span>
+            <p><strong>Compromisso com a transparência</strong> Os dados legislativos exibidos neste site são provenientes do SAPL da Assembleia Legislativa de Roraima e foram atualizados em {new Date(materiasData.generatedAt).toLocaleDateString('pt-BR')}.</p>
+          </div>
+
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} Aurelina Medeiros. Todos os direitos reservados.</p>
+            <p>Deputada Estadual • Roraima</p>
+            <a href="#inicio">Voltar ao topo <span aria-hidden="true">↑</span></a>
+          </div>
+        </div>
+      </footer>
       {message && <div className="toast" role="status">{message}</div>}
     </main>
   );
