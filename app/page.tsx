@@ -57,6 +57,32 @@ export default function Home() {
       <div className="campaign-canvas" aria-label="Site da campanha de Aurelina Medeiros">
         <img className="campaign-art" src="/aurelina-layout.jpg" alt="Aurelina Medeiros, deputada estadual 44222 — A amiga de sempre" />
 
+        <section className="mobile-campaign" aria-label="Apresentação de Aurelina Medeiros">
+          <header className="mobile-campaign-header">
+            <a className="mobile-brand" href="#inicio" aria-label="Aurelina Medeiros 44222">
+              <small>DEPUTADA ESTADUAL</small>
+              <strong>AURELINA</strong>
+              <span>MEDEIROS • 44222</span>
+            </a>
+            <a className="mobile-instagram" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer" aria-label="Instagram oficial">◎</a>
+          </header>
+          <div className="mobile-campaign-copy">
+            <p>A AMIGA DE</p>
+            <h1>Sempre!</h1>
+            <span>Experiência, trabalho e compromisso com o povo de Roraima.</span>
+            <div className="mobile-campaign-actions">
+              <a href="#atuacao">PROJETOS E INDICAÇÕES <b aria-hidden="true">→</b></a>
+              <a href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer">ACOMPANHE NO INSTAGRAM</a>
+            </div>
+          </div>
+          <div className="mobile-campaign-themes" aria-label="Principais bandeiras">
+            <a href="#saude"><b>♡</b><span>Saúde</span></a>
+            <a href="#educacao"><b>◇</b><span>Educação</span></a>
+            <a href="#infraestrutura"><b>▦</b><span>Infraestrutura</span></a>
+            <a href="#agricultura"><b>♧</b><span>Agricultura</span></a>
+          </div>
+        </section>
+
         <nav aria-label="Navegação principal">
           {links.map((link) => <a key={link.label} href={link.href} className={link.className}><span className="sr-only">{link.label}</span></a>)}
         </nav>
