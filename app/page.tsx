@@ -17,6 +17,7 @@ export default function Home() {
   const [busca, setBusca] = useState('');
   const [tipo, setTipo] = useState('TODOS');
   const [ano, setAno] = useState('TODOS');
+  const [ordenacao, setOrdenacao] = useState('RECENTES');
   const [limite, setLimite] = useState(12);
 
   const anos = useMemo(
@@ -27,13 +28,19 @@ export default function Home() {
   const materiasFiltradas = useMemo(() => {
     const termo = busca.trim().toLocaleLowerCase('pt-BR');
 
-    return materiasData.materias.filter((materia) => {
+    const filtradas = materiasData.materias.filter((materia) => {
       const correspondeTipo = tipo === 'TODOS' || materia.tipo === tipo;
       const correspondeAno = ano === 'TODOS' || materia.ano === Number(ano);
       const texto = `${materia.tipo} ${materia.numero} ${materia.ano} ${materia.ementa}`.toLocaleLowerCase('pt-BR');
       return correspondeTipo && correspondeAno && (!termo || texto.includes(termo));
     });
-  }, [ano, busca, tipo]);
+
+    return filtradas.sort((a, b) => {
+      if (ordenacao === 'ANTIGAS') return a.dataApresentacao.localeCompare(b.dataApresentacao) || a.numero - b.numero;
+      if (ordenacao === 'NUMERO') return a.numero - b.numero || b.ano - a.ano;
+      return b.dataApresentacao.localeCompare(a.dataApresentacao) || b.numero - a.numero;
+    });
+  }, [ano, busca, ordenacao, tipo]);
 
   function reiniciarLista() {
     setLimite(12);
@@ -94,26 +101,28 @@ export default function Home() {
       </div>
 
       <section id="atuacao" className="legislative-section" aria-labelledby="atuacao-title">
-        <div className="legislative-wrap">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">ATUAÇÃO PARLAMENTAR</p>
-              <h1 id="atuacao-title">Projetos de Lei e Indicações</h1>
-              <p className="section-intro">
-                Consulte todas as matérias de autoria e coautoria da deputada Aurelina Medeiros
-                registradas no Sistema de Apoio ao Processo Legislativo da Assembleia de Roraima.
-              </p>
-            </div>
+        <div className="legislative-hero">
+          <div className="assembly-photo" aria-hidden="true" />
+          <div className="hero-copy-layer" />
+          <div className="legislative-wrap hero-content">
+            <p className="eyebrow">ATUAÇÃO PARLAMENTAR</p>
+            <h1 id="atuacao-title">Projetos de Lei e Indicações</h1>
+            <p className="section-intro">
+              Acompanhe todas as matérias de autoria e coautoria da deputada Aurelina Medeiros
+              registradas no Sistema de Apoio ao Processo Legislativo da Assembleia de Roraima.
+            </p>
             <a className="official-source" href={materiasData.source} target="_blank" rel="noreferrer">
-              Ver fonte oficial <span aria-hidden="true">↗</span>
+              <span className="source-icon" aria-hidden="true">▤</span> Ver fonte oficial <span aria-hidden="true">↗</span>
             </a>
           </div>
+        </div>
 
+        <div className="legislative-wrap legislative-content">
           <div className="legislative-stats" aria-label="Resumo das matérias">
-            <div><strong>{materiasData.totals.total.toLocaleString('pt-BR')}</strong><span>matérias</span></div>
-            <div><strong>{materiasData.totals.projetos}</strong><span>Projetos de Lei</span></div>
-            <div><strong>{materiasData.totals.indicacoes}</strong><span>Indicações</span></div>
-            <div><strong>{anos.length}</strong><span>anos de atuação</span></div>
+            <div className="stat-item stat-blue"><span className="stat-icon" aria-hidden="true">▤</span><p><strong>{materiasData.totals.total.toLocaleString('pt-BR')}</strong><b>MATÉRIAS</b><small>registradas</small></p></div>
+            <div className="stat-item stat-green"><span className="stat-icon" aria-hidden="true">⚖</span><p><strong>{materiasData.totals.projetos}</strong><b>PROJETOS DE LEI</b><small>apresentados</small></p></div>
+            <div className="stat-item stat-purple"><span className="stat-icon" aria-hidden="true">●</span><p><strong>{materiasData.totals.indicacoes}</strong><b>INDICAÇÕES</b><small>realizadas</small></p></div>
+            <div className="stat-item stat-gold"><span className="stat-icon" aria-hidden="true">▦</span><p><strong>{anos.length}</strong><b>ANOS DE ATUAÇÃO</b><small>dedicada a Roraima</small></p></div>
           </div>
 
           <div className="filters" aria-label="Filtros de matérias">
@@ -143,8 +152,18 @@ export default function Home() {
             </label>
           </div>
 
-          <div className="results-line" aria-live="polite">
-            <strong>{materiasFiltradas.length.toLocaleString('pt-BR')}</strong> matérias encontradas
+          <div className="results-toolbar">
+            <div className="results-line" aria-live="polite">
+              <span aria-hidden="true">▤</span> <strong>{materiasFiltradas.length.toLocaleString('pt-BR')}</strong> matérias encontradas
+            </div>
+            <label className="sort-field">
+              <span>Ordenar por:</span>
+              <select value={ordenacao} onChange={(event) => { setOrdenacao(event.target.value); reiniciarLista(); }}>
+                <option value="RECENTES">Mais recentes</option>
+                <option value="ANTIGAS">Mais antigas</option>
+                <option value="NUMERO">Número crescente</option>
+              </select>
+            </label>
           </div>
 
           <div className="matter-grid">
@@ -161,12 +180,12 @@ export default function Home() {
                 <h2>{materia.tipo === 'PL' ? 'Projeto de Lei' : 'Indicação'} nº {materia.numero}/{materia.ano}</h2>
                 <p>{materia.ementa}</p>
                 <div className="matter-meta">
-                  <span>{new Date(`${materia.dataApresentacao}T12:00:00`).toLocaleDateString('pt-BR')}</span>
+                  <span><span aria-hidden="true">▦</span> {new Date(`${materia.dataApresentacao}T12:00:00`).toLocaleDateString('pt-BR')}</span>
                   {!materia.primeiroAutor && <span>Coautoria</span>}
                 </div>
                 <div className="matter-actions">
                   <a href={materia.detalheUrl} target="_blank" rel="noreferrer">Ver tramitação <span aria-hidden="true">↗</span></a>
-                  {materia.textoUrl && <a href={materia.textoUrl} target="_blank" rel="noreferrer">Abrir documento</a>}
+                  {materia.textoUrl && <a href={materia.textoUrl} target="_blank" rel="noreferrer"><span aria-hidden="true">▤</span> Abrir documento</a>}
                 </div>
               </article>
             ))}
