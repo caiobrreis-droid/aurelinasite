@@ -148,7 +148,7 @@ export default function Home() {
             <div className="stat-item stat-blue"><span className="stat-icon" aria-hidden="true">▤</span><p><strong>{materiasData.totals.total.toLocaleString('pt-BR')}</strong><b>MATÉRIAS</b><small>registradas</small></p></div>
             <div className="stat-item stat-green"><span className="stat-icon" aria-hidden="true">⚖</span><p><strong>{materiasData.totals.projetos}</strong><b>PROJETOS DE LEI</b><small>apresentados</small></p></div>
             <div className="stat-item stat-purple"><span className="stat-icon" aria-hidden="true">●</span><p><strong>{materiasData.totals.indicacoes}</strong><b>INDICAÇÕES</b><small>realizadas</small></p></div>
-            <div className="stat-item stat-gold"><span className="stat-icon" aria-hidden="true">▦</span><p><strong>{anos.length}</strong><b>ANOS DE ATUAÇÃO</b><small>dedicada a Roraima</small></p></div>
+            <div className="stat-item stat-gold"><span className="stat-icon" aria-hidden="true">▦</span><p><strong>31</strong><b>ANOS DE ATUAÇÃO</b><small>dedicada a Roraima</small></p></div>
           </div>
 
           <div className="filters" aria-label="Filtros de matérias">
