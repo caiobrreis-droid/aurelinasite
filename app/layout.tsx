@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Aurelina Medeiros 44222',
     description: 'A amiga de sempre. Experiência, trabalho e compromisso com o povo de Roraima.',
-    images: ['/aurelina-hero-2026.jpg'],
+    images: ['/aurelina-layout-2026.jpg'],
   },
 };
 

@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main id="inicio" className="site-shell">
       <div className="campaign-canvas" aria-label="Site da campanha de Aurelina Medeiros">
-        <img className="campaign-art" src="/aurelina-hero-2026.jpg" alt="Aurelina Medeiros, deputada estadual 44222 — A amiga de sempre" />
+        <img className="campaign-art" src="/aurelina-layout-2026.jpg" alt="Aurelina Medeiros, deputada estadual 44222 — A amiga de sempre" />
 
         <section className="mobile-campaign" aria-label="Apresentação de Aurelina Medeiros">
           <header className="mobile-campaign-header">
@@ -106,6 +106,22 @@ export default function Home() {
           <a className="hotspot priority seguranca" href="#social"><span className="sr-only">Segurança e cidadania</span></a>
           <a className="hotspot priority desenvolvimento" href="#agricultura"><span className="sr-only">Desenvolvimento com responsabilidade</span></a>
         </section>
+
+        <section aria-label="Bandeiras da campanha">
+          <a className="hotspot flag saude" href="#saude"><span className="sr-only">Saúde</span></a>
+          <a className="hotspot flag educacao" href="#educacao"><span className="sr-only">Educação</span></a>
+          <a className="hotspot flag social-card" href="#social"><span className="sr-only">Social</span></a>
+          <a className="hotspot flag infraestrutura" href="#infraestrutura"><span className="sr-only">Infraestrutura</span></a>
+          <a className="hotspot flag agricultura" href="#agricultura"><span className="sr-only">Agricultura familiar</span></a>
+        </section>
+
+        <form className="newsletter-form" onSubmit={subscribe} aria-label="Receba nossas novidades">
+          <label className="sr-only" htmlFor="nome">Seu nome</label>
+          <input id="nome" name="nome" className="overlay-input name-input" placeholder="Seu nome" required />
+          <label className="sr-only" htmlFor="email">Seu e-mail</label>
+          <input id="email" name="email" type="email" className="overlay-input email-input" placeholder="Seu e-mail" required />
+          <button className="hotspot receive-button" type="submit"><span className="sr-only">Quero receber</span></button>
+        </form>
 
         <div id="sobre" className="anchor anchor-sobre" />
         <div id="noticias" className="anchor anchor-flags" />
