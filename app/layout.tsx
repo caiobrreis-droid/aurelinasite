@@ -7,10 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Aurelina Medeiros 44222',
     description: 'A amiga de sempre. Experiência, trabalho e compromisso com o povo de Roraima.',
-    images: ['/aurelina-layout.jpg'],
+    images: ['/aurelina-hero-2026.jpg'],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="pt-BR"><body>{children}</body></html>;
 }
+

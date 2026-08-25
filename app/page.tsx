@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main id="inicio" className="site-shell">
       <div className="campaign-canvas" aria-label="Site da campanha de Aurelina Medeiros">
-        <img className="campaign-art" src="/aurelina-layout.jpg" alt="Aurelina Medeiros, deputada estadual 44222 — A amiga de sempre" />
+        <img className="campaign-art" src="/aurelina-hero-2026.jpg" alt="Aurelina Medeiros, deputada estadual 44222 — A amiga de sempre" />
 
         <section className="mobile-campaign" aria-label="Apresentação de Aurelina Medeiros">
           <header className="mobile-campaign-header">
@@ -99,26 +99,17 @@ export default function Home() {
           <a className="hotspot social youtube" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><span className="sr-only">YouTube</span></a>
         </div>
 
-        <section id="propostas" aria-label="Bandeiras da campanha">
-          <a className="hotspot flag saude" href="#saude"><span className="sr-only">Saúde</span></a>
-          <a className="hotspot flag educacao" href="#educacao"><span className="sr-only">Educação</span></a>
-          <a className="hotspot flag social-card" href="#social"><span className="sr-only">Social</span></a>
-          <a className="hotspot flag infraestrutura" href="#infraestrutura"><span className="sr-only">Infraestrutura</span></a>
-          <a className="hotspot flag agricultura" href="#agricultura"><span className="sr-only">Agricultura familiar</span></a>
+        <section id="propostas" aria-label="Prioridades da campanha">
+          <a className="hotspot priority trabalho" href="#sobre"><span className="sr-only">Trabalho que faz a diferença</span></a>
+          <a className="hotspot priority saude" href="#saude"><span className="sr-only">Saúde de qualidade</span></a>
+          <a className="hotspot priority educacao" href="#educacao"><span className="sr-only">Educação para todos</span></a>
+          <a className="hotspot priority seguranca" href="#social"><span className="sr-only">Segurança e cidadania</span></a>
+          <a className="hotspot priority desenvolvimento" href="#agricultura"><span className="sr-only">Desenvolvimento com responsabilidade</span></a>
         </section>
-
-        <form className="newsletter-form" onSubmit={subscribe} aria-label="Receba nossas novidades">
-          <label className="sr-only" htmlFor="nome">Seu nome</label>
-          <input id="nome" name="nome" className="overlay-input name-input" placeholder="Seu nome" required />
-          <label className="sr-only" htmlFor="email">Seu e-mail</label>
-          <input id="email" name="email" type="email" className="overlay-input email-input" placeholder="Seu e-mail" required />
-          <button className="hotspot receive-button" type="submit"><span className="sr-only">Quero receber</span></button>
-        </form>
 
         <div id="sobre" className="anchor anchor-sobre" />
         <div id="noticias" className="anchor anchor-flags" />
         <div id="galeria" className="anchor anchor-flags" />
-        <div id="contato" className="anchor anchor-contato" />
         <div id="saude" className="anchor anchor-flags" />
         <div id="educacao" className="anchor anchor-flags" />
         <div id="social" className="anchor anchor-flags" />
@@ -233,7 +224,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer">
+      <footer id="contato" className="site-footer">
         <div className="footer-accent" aria-hidden="true" />
         <div className="footer-wrap">
           <section className="footer-cta" aria-labelledby="footer-news-title">
@@ -319,3 +310,4 @@ export default function Home() {
     </main>
   );
 }
+
