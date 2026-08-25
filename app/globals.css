@@ -25,6 +25,10 @@ body { margin: 0; min-width: 320px; background: #002d78; color: #fff; font-famil
 .social-rail .facebook { top: 43.7%; }
 .social-rail .whatsapp { top: 47.9%; }
 .social-rail .youtube { top: 52.1%; }
+.follow { top: 93.2%; height: 4.4%; }
+.follow.instagram { left: 76.8%; width: 3%; }
+.follow.facebook { left: 80%; width: 3%; }
+.follow.youtube { left: 83.2%; width: 3.6%; }
 .priority { top: 50.7%; height: 13.6%; }
 .priority.trabalho { left: 7.2%; width: 18%; }
 .priority.saude { left: 25.2%; width: 16.5%; }

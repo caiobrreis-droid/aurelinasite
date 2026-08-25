@@ -94,10 +94,14 @@ export default function Home() {
 
         <div className="social-rail" aria-label="Redes sociais">
           <a className="hotspot social instagram" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer"><span className="sr-only">Instagram oficial de Aurelina Medeiros</span></a>
-          <a className="hotspot social facebook" href="https://www.facebook.com/" target="_blank" rel="noreferrer"><span className="sr-only">Facebook</span></a>
+          <a className="hotspot social facebook" href="https://www.facebook.com/AURELINAMEDEIROSOFICIAL" target="_blank" rel="noreferrer"><span className="sr-only">Facebook oficial de Aurelina Medeiros</span></a>
           <a className="hotspot social whatsapp" href="https://wa.me/?text=Ol%C3%A1%2C%20Aurelina!" target="_blank" rel="noreferrer"><span className="sr-only">WhatsApp</span></a>
-          <a className="hotspot social youtube" href="https://www.youtube.com/" target="_blank" rel="noreferrer"><span className="sr-only">YouTube</span></a>
+          <a className="hotspot social youtube" href="https://www.youtube.com/@AURELINAMEDEIROSOFICIAL" target="_blank" rel="noreferrer"><span className="sr-only">YouTube oficial de Aurelina Medeiros</span></a>
         </div>
+
+        <a className="hotspot follow instagram" href="https://www.instagram.com/aurelinamedeirosoficial/" target="_blank" rel="noreferrer"><span className="sr-only">Siga Aurelina no Instagram</span></a>
+        <a className="hotspot follow facebook" href="https://www.facebook.com/AURELINAMEDEIROSOFICIAL" target="_blank" rel="noreferrer"><span className="sr-only">Siga Aurelina no Facebook</span></a>
+        <a className="hotspot follow youtube" href="https://www.youtube.com/@AURELINAMEDEIROSOFICIAL" target="_blank" rel="noreferrer"><span className="sr-only">Siga Aurelina no YouTube</span></a>
 
         <section id="propostas" aria-label="Prioridades da campanha">
           <a className="hotspot priority trabalho" href="#sobre"><span className="sr-only">Trabalho que faz a diferença</span></a>
